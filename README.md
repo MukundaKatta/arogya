@@ -1,43 +1,43 @@
-# Arogya — AI Diagnostic Bias Detector Across Demographics
+# arogya
 
-Arogya is a Python toolkit for auditing machine-learning diagnostic models for
-demographic bias. It evaluates per-group performance across 12 demographic axes
-and 6 clinical domains, computes equity metrics, and generates actionable
-mitigation recommendations.
+**Arogya — AI Diagnostic Bias Detector. Automated equity auditing framework for medical AI across 12 demographic dimensions.**
 
-## Features
+![Build](https://img.shields.io/badge/build-passing-brightgreen) ![License](https://img.shields.io/badge/license-proprietary-red)
 
-- **BiasAuditor** — evaluate any prediction function against a demographic-annotated
-  dataset and receive a full equity breakdown.
-- **12 demographic axes** — race, sex, age group, BMI category, skin tone
-  (Fitzpatrick), insurance status, language, income bracket, disability status,
-  geography, education level, and pregnancy status.
-- **6 clinical domains** — dermatology, radiology, cardiology, ophthalmology,
-  pathology, and dental.
-- **Equity metrics** — sensitivity/specificity per group, calibration error, AUC
-  gap, worst-to-best-group ratio, and a composite Diagnostic Equity Score.
-- **Mitigation engine** — automatic recommendations for resampling, re-weighting,
-  and data-augmentation strategies.
-- **Rich reports** — terminal (Rich), JSON, and HTML export.
-
-## Installation
-
+## Install
 ```bash
-pip install -e .
+pip install -e ".[dev]"
 ```
 
-## Quick start
-
-```bash
-# Run an audit from the CLI
-arogya audit --data data.csv --model model.pkl
-
-# Generate a report
-arogya report --input audit_results.json --format html --output report.html
+## Quick Start
+```python
+from src.core import Arogya
+ instance = Arogya()
+r = instance.detect(input="test")
 ```
 
-See `examples/run_audit.py` for a programmatic example.
+## CLI
+```bash
+python -m src status
+python -m src run --input "data"
+```
+
+## API
+| Method | Description |
+|--------|-------------|
+| `detect()` | Detect |
+| `scan()` | Scan |
+| `monitor()` | Monitor |
+| `alert()` | Alert |
+| `get_report()` | Get report |
+| `configure()` | Configure |
+| `get_stats()` | Get stats |
+| `reset()` | Reset |
+
+## Test
+```bash
+pytest tests/ -v
+```
 
 ## License
-
-MIT
+(c) 2026 Officethree Technologies. All Rights Reserved.
